@@ -1,0 +1,559 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard | WastenotHub</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/comany_dashboard.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-recycle"></i> E-WasteNotHub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/company_dashboard/"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                    </li>
+    
+                    <!-- Dropdown for Manage Listings -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="manageDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-list-task"></i> Manage Listings
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/post_refurbished/"><i class="bi bi-plus-circle"></i> Add Listing</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-list-check"></i> My Listings <span class="badge bg-light text-dark ms-1">5</span></a></li>
+                            <li><a class="dropdown-item" href="/order_company/"><i class="bi bi-cart-check"></i>Your Orders <span class="badge bg-light text-dark ms-1">2</span></a></li>
+                            <li><a class="dropdown-item" href="/order_to_company/"><i class="bi bi-box-seam"></i> Product Orders <span class="badge bg-light text-dark ms-1">4</span></a></li>
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/browse_E_Waste/"><i class="bi bi-bag-fill"></i> Browse e Waste <span class="badge bg-light text-dark ms-1">2</span></a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/company_cart/"><i class="bi bi-cart-check"></i> Company Cart <span class="badge bg-light text-dark ms-1">2</span></a>
+                    </li>
+                </ul>
+    
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" class="user-profile me-1"> Priya Sharma
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/logout/"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <!-- Welcome Section -->
+        <div class="dashboard-header">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h2>Welcome back, <span class="text-primary">Company!</span></h2>
+                    <p class="text-muted mb-0">Manage your e-waste listings and track orders from buyers</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search listings...">
+                        <button class="btn btn-outline-success"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="stats-card">
+                    <div class="card-body">
+                        <div class="icon">
+                            <i class="bi bi-list-check"></i>
+                        </div>
+                        <div class="count">5</div>
+                        <div class="title">Active Listings</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-card">
+                    <div class="card-body">
+                        <div class="icon">
+                            <i class="bi bi-cart-check"></i>
+                        </div>
+                        <div class="count">2</div>
+                        <div class="title">Pending Orders</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-card">
+                    <div class="card-body">
+                        <div class="icon">
+                            <i class="bi bi-currency-rupee"></i>
+                        </div>
+                        <div class="count">₹12,700</div>
+                        <div class="title">Total Earnings</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="row g-4 mb-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="card-body">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-plus-circle icon"></i>
+                        </div>
+                        <h3 class="card-title">Add New Listing</h3>
+                        <p class="card-text">
+                            Submit your e-waste items for approval. Include photos, description, and pickup details.
+                        </p>
+                        <a href="#" class="btn btn-success">
+                            <i class="bi bi-plus-lg me-2"></i> Create Listing
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="card-body">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-list-check icon"></i>
+                        </div>
+                        <h3 class="card-title">My Listings</h3>
+                        <p class="card-text">
+                            Manage your existing listings, track approval status, and update product details.
+                        </p>
+                        <a href="#" class="btn btn-warning">
+                            <i class="bi bi-eye me-2"></i> View Listings
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="card-body">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-cart-check icon"></i>
+                        </div>
+                        <h3 class="card-title">Orders</h3>
+                        <p class="card-text">
+                            View purchase requests, schedule pickups, and track order status.
+                        </p>
+                        <a href="#" class="btn btn-primary">
+                            <i class="bi bi-cart me-2"></i> View Orders
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Listings -->
+        <!-- <div class="dashboard-section">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="section-title"><i class="bi bi-list-check"></i> Recent Listings</h3>
+                <a href="#" class="btn btn-outline-success">View All</a>
+            </div>
+            
+            <div class="listing-item">
+                <div class="row align-items-center">
+                    <div class="col-md-2 mb-3 mb-md-0">
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="listing-img" alt="Laptop">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="listing-title mb-0">Dell Latitude Laptop (2019 Model)</h5>
+                            <span class="listing-status status-approved">Approved</span>
+                        </div>
+                        <p class="text-muted small mb-2">Working condition with minor scratches, includes charger</p>
+                        <div class="listing-meta">
+                            <span class="me-3"><i class="bi bi-calendar"></i> Listed: 2 days ago</span>
+                            <span class="me-3"><i class="bi bi-currency-rupee"></i> ₹4,500</span>
+                            <span><i class="bi bi-eye"></i> 24 views</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <button class="btn btn-outline-success btn-sm me-2">Edit</button>
+                        <button class="btn btn-outline-primary btn-sm">View</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="listing-item">
+                <div class="row align-items-center">
+                    <div class="col-md-2 mb-3 mb-md-0">
+                        <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="listing-img" alt="Printer">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="listing-title mb-0">HP LaserJet Printer</h5>
+                            <span class="listing-status status-pending">Pending Approval</span>
+                        </div>
+                        <p class="text-muted small mb-2">2018 model, needs new toner cartridge</p>
+                        <div class="listing-meta">
+                            <span class="me-3"><i class="bi bi-calendar"></i> Listed: 5 hours ago</span>
+                            <span class="me-3"><i class="bi bi-currency-rupee"></i> ₹2,200</span>
+                            <span><i class="bi bi-eye"></i> 8 views</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <button class="btn btn-outline-success btn-sm me-2">Edit</button>
+                        <button class="btn btn-outline-primary btn-sm">View</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="listing-item">
+                <div class="row align-items-center">
+                    <div class="col-md-2 mb-3 mb-md-0">
+                        <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="listing-img" alt="iPad">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="listing-title mb-0">Apple iPad Air 2</h5>
+                            <span class="listing-status status-rejected">Needs Revision</span>
+                        </div>
+                        <p class="text-muted small mb-2">Admin comment: Please add more photos showing screen condition</p>
+                        <div class="listing-meta">
+                            <span class="me-3"><i class="bi bi-calendar"></i> Listed: 1 day ago</span>
+                            <span class="me-3"><i class="bi bi-currency-rupee"></i> ₹8,000</span>
+                            <span><i class="bi bi-eye"></i> 15 views</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <button class="btn btn-outline-success btn-sm me-2">Edit</button>
+                        <button class="btn btn-outline-primary btn-sm">View</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="dashboard-section">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="section-title"><i class="bi bi-list-check"></i>Recent Listings</h3>
+            </div>
+        
+            {% for item in recent_items %}
+            <a href="{% url 'refurbished_details_company' item.id %}" style="text-decoration: none; color: inherit;">
+            <div class="listing-item">
+                <div class="row align-items-center">
+                    <div class="col-md-2 mb-3 mb-md-0">
+                        {% if item.images.first %}
+                            <img src="{{ item.images.first.image.url }}" class="listing-img" alt="{{ item.product_name }}">
+                        {% else %}
+                            <img src="{% static 'images/no-image.png' %}" class="listing-img" alt="No Image">
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="listing-title mb-0">{{ item.product_name }}</h5>
+                            <span class="listing-status 
+                                {% if item.listing_status == 'pending' %}status-pending
+                                {% elif item.listing_status == 'approved' %}status-approved
+                                {% elif item.listing_status == 'rejected' %}status-rejected
+                                {% endif %}
+                            ">
+                                {{ item.listing_status|title }}
+                            </span>
+                        </div>
+                        <p class="text-muted small mb-2">{{ item.description }}</p>
+        
+                        <!-- 💡 Conditional Specs Display -->
+                        <div class="text-muted small">
+                            {% if item.category == "laptop" or item.category == "mobile" %}
+                                <strong>RAM:</strong> {{ item.ram }} GB| 
+                                <strong>Storage:</strong> {{ item.storage }} GB| 
+                                <strong>Processor:</strong> {{ item.processor }}
+                                {% if item.category == "laptop" %}
+                                    | <strong>Display:</strong> {{ item.display_size }} Inch
+                                {% endif %}
+                            {% elif item.category == "fridge" %}
+                                <strong>Capacity:</strong> {{ item.capacity }} Liter| 
+                                <strong>Door:</strong> {{ item.door }} | 
+                                <strong>Energy Rating:</strong> {{ item.energy_rating }} Star
+                            {% elif item.category == "ac" %}
+                                <strong>Capacity:</strong> {{ item.capacity }} Ton| 
+                                <strong>Energy Rating:</strong> {{ item.energy_rating }} Star
+                            {% elif item.category == "other" %}
+                                <strong>Details:</strong> {{ item.extra_info }}
+                            {% endif %}
+                        </div>
+        
+                        <div class="listing-meta mt-2">
+                            <span class="me-3"><i class="bi bi-calendar"></i> Listed: {{ item.submitted_at|timesince }} ago</span>
+                            <span class="me-3"><i class="bi bi-currency-rupee"></i>{{ item.price }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <button class="btn btn-outline-success btn-sm me-2">Edit</button>
+                        <button class="btn btn-outline-primary btn-sm">View</button>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-muted">No listings found.</p>
+            </a>
+            {% endfor %}
+        </div>
+
+        <!-- Recent Orders section-->
+<div class="dashboard-section">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="section-title"><i class="bi bi-cart-check"></i> Recent Orders</h3>
+        <a href="#" class="btn btn-outline-primary">View All</a>
+    </div>
+    
+    <!-- Order 1 - Ready for Pickup Confirmation -->
+    <div class="order-card">
+        <div class="row align-items-center">
+            <div class="col-md-2 mb-3 mb-md-0">
+                <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="listing-img" alt="Product">
+            </div>
+            <div class="col-md-5">
+                <h5>Samsung Galaxy S8</h5>
+                <p class="text-muted small mb-2">Good condition • Includes charger</p>
+                <div class="d-flex align-items-center">
+                    <span class="me-3"><i class="bi bi-currency-rupee"></i> ₹6,500</span>
+                    <span><i class="bi bi-geo-alt"></i> Bangalore</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <span class="order-status status-scheduled">Pickup Scheduled</span>
+                <div class="small text-muted mt-1">March 25, 2025 - 2:00 PM</div>
+            </div>
+            <div class="col-md-2 text-md-end mt-3 mt-md-0">
+                <button class="btn btn-outline-primary btn-sm">Details</button>
+            </div>
+        </div>
+        
+        <!-- New Pickup Confirmation Section -->
+        <div class="mt-3 pt-3 border-top">
+            <h6><i class="bi bi-check-circle-fill text-primary me-2"></i>Pickup Confirmation</h6>
+            <div class="alert alert-warning mt-2">
+                <i class="bi bi-info-circle-fill me-2"></i>Volunteer has arrived for pickup. Please confirm the handover.
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="badge bg-light text-dark me-2"><i class="bi bi-person-badge"></i> Volunteer: Rajesh K.</span>
+                    <span class="badge bg-light text-dark"><i class="bi bi-telephone"></i> +91 98765 43210</span>
+                </div>
+                <button class="btn btn-success btn-sm" id="confirmPickupBtn">
+                    <i class="bi bi-check-lg me-1"></i> Confirm Pickup
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Order 2 - In Transit -->
+    <div class="order-card">
+        <div class="row align-items-center">
+            <div class="col-md-2 mb-3 mb-md-0">
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="listing-img" alt="Product">
+            </div>
+            <div class="col-md-5">
+                <h5>MacBook Air 2015</h5>
+                <p class="text-muted small mb-2">Working condition • 128GB SSD</p>
+                <div class="d-flex align-items-center">
+                    <span class="me-3"><i class="bi bi-currency-rupee"></i> ₹12,000</span>
+                    <span><i class="bi bi-geo-alt"></i> Mumbai</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <span class="order-status status-picked">In Transit</span>
+                <div class="small text-muted mt-1">Pickup confirmed: March 25, 2025</div>
+            </div>
+            <div class="col-md-2 text-md-end mt-3 mt-md-0">
+                <button class="btn btn-outline-primary btn-sm">Details</button>
+            </div>
+        </div>
+        
+        <!-- Status Timeline -->
+        <div class="mt-3 pt-3 border-top">
+            <h6><i class="bi bi-activity me-2"></i>Order Status Timeline</h6>
+            <div class="timeline mt-3">
+                <div class="timeline-item completed">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <h6>Order Placed</h6>
+                        <p class="text-muted small mb-0">March 20, 2025 - 10:15 AM</p>
+                    </div>
+                </div>
+                <div class="timeline-item completed">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <h6>Pickup Scheduled</h6>
+                        <p class="text-muted small mb-0">March 22, 2025 - 3:30 PM</p>
+                    </div>
+                </div>
+                <div class="timeline-item completed">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <h6>Pickup Confirmed</h6>
+                        <p class="text-muted small mb-0">March 25, 2025 - 2:15 PM</p>
+                        <p class="small">Confirmed by you and volunteer</p>
+                    </div>
+                </div>
+                <div class="timeline-item current">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <h6>In Transit</h6>
+                        <p class="text-muted small mb-0">March 25, 2025 - 3:00 PM</p>
+                        <p class="small">Volunteer is delivering to buyer</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <h6>Delivery Completed</h6>
+                        <p class="text-muted small mb-0">Pending</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Timeline Styles */
+    .timeline {
+        position: relative;
+        padding-left: 30px;
+    }
+    
+    .timeline-item {
+        position: relative;
+        padding-bottom: 20px;
+    }
+    
+    .timeline-item:last-child {
+        padding-bottom: 0;
+    }
+    
+    .timeline-point {
+        position: absolute;
+        left: -30px;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #e9ecef;
+        border: 3px solid #e9ecef;
+    }
+    
+    .timeline-item.completed .timeline-point {
+        background-color: var(--success-color);
+        border-color: var(--success-color);
+    }
+    
+    .timeline-item.current .timeline-point {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        animation: pulse 2s infinite;
+    }
+    
+    .timeline-content {
+        padding-left: 15px;
+    }
+    
+    .timeline-item.completed h6 {
+        color: var(--success-color);
+    }
+    
+    .timeline-item.current h6 {
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    
+    /* Additional Status Styles */
+    .status-picked {
+        background-color: rgba(42, 157, 143, 0.1);
+        color: var(--primary-color);
+    }
+    
+    .status-intransit {
+        background-color: rgba(33, 150, 243, 0.1);
+        color: var(--info-color);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Pickup Confirmation
+        document.getElementById('confirmPickupBtn')?.addEventListener('click', function() {
+            // In a real app, this would send an API request
+            const orderCard = this.closest('.order-card');
+            
+            // Update the status
+            const statusBadge = orderCard.querySelector('.order-status');
+            statusBadge.textContent = 'Pickup Confirmed';
+            statusBadge.className = 'order-status status-picked';
+            
+            // Update the timeline
+            const timelineItem = orderCard.querySelector('.timeline-item:nth-child(3)');
+            timelineItem.classList.add('completed');
+            
+            // Show confirmation message
+            const alertBox = document.createElement('div');
+            alertBox.className = 'alert alert-success mt-3';
+            alertBox.innerHTML = `
+                <i class="bi bi-check-circle-fill me-2"></i>
+                Pickup confirmed! Waiting for admin verification.
+            `;
+            this.closest('.border-top').appendChild(alertBox);
+            
+            // Disable the button
+            this.disabled = true;
+            this.innerHTML = '<i class="bi bi-check2-all me-1"></i> Confirmed';
+        });
+        
+        // You can add more interactive elements here
+    });
+</script>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 WastenotHub. All rights reserved. Every sale helps reduce electronic waste.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // You can add interactive elements here
+            console.log('Seller dashboard loaded');
+        });
+    </script>
+</body>
+</html>

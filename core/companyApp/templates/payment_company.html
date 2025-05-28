@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available E-Waste - WastenotHub</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <!-- <style>
+        .product-image {
+            max-width: 300px;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style> -->
+</head>
+<body>
+    <div class="container py-5">
+        <h2 class="mb-4">Choose Your Payment Method</h2>
+    
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">{{ item.product_name }}</h5>
+                <p class="card-text">{{ item.description }}</p>
+                <h4 class="text-success">₹{{ item.product_price }}</h4>
+            </div>
+        </div>
+    
+        <form method="post" action="{% url 'make_payment' item.id %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Select Payment Method</label>
+                <select class="form-select" name="payment_method" required>
+                    <option value="">Choose...</option>
+                    <option value="UPI" disabled>UPI (Coming Soon)</option>
+                    <option value="Credit Card" disabled>Credit Card (Coming Soon)</option>
+                    <option value="Debit Card" disabled>Debit Card (Coming Soon)</option>
+                    <option value="Cash On Delivery">Cash On Delivery (COD)</option>
+                </select>
+            </div>
+    
+            <button type="submit" class="btn btn-success">Pay with COD</button>
+        </form>
+    
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

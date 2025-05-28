@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Admin Dashboard | WastenotHub</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="{% static 'css/dashboard.css'%}">
+   </head>
+   <body>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+         <div class="container">
+            <a class="navbar-brand" href="#">
+            <i class="bi bi-recycle"></i> WastenotHub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+               <ul class="navbar-nav me-auto">
+                  <li class="nav-item">
+                     <a class="nav-link active" href="/admin_dashboard/">
+                     <i class="bi bi-speedometer2"></i> Dashboard
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/pending_refurbished/">
+                     <i class="bi bi-hourglass-split"></i> Pending Refurbished
+                     </a>
+                  </li>
+                  <!-- Approvals Dropdown -->
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                     <i class="bi bi-clipboard-check"></i> Approvals
+                     <span class="badge bg-danger ms-1">{{ approved_count }}</span>
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/all_approvals/">E-Waste Approvals</a></li>
+                        <li><a class="dropdown-item" href="/refurbished_approvals/">Refurbished Approvals</a></li>
+                     </ul>
+                  </li>
+                  <!-- Rejects Dropdown -->
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                     <i class="bi bi-clipboard-x"></i> Rejects
+                     <span class="badge bg-danger ms-1">{{ rejected_count }}</span>
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/all_rejects/">E-Waste Rejects</a></li>
+                        <li><a class="dropdown-item" href="/refurbished_rejects/">Refurbished Rejects</a></li>
+                     </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-cart3"></i> Orders
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li>
+                           <a class="dropdown-item" href="/company_orders_admin/">
+                              <i class="bi bi-building"></i> Company Orders
+                              <span class="badge bg-success float-end">{{ company_order_count }}</span>
+                           </a>
+                        </li>
+                        <li>
+                           <a class="dropdown-item" href="/buyer_orders_admin/">
+                              <i class="bi bi-person-bounding-box"></i> Buyer Orders
+                              <span class="badge bg-info float-end">{{ buyer_order_count }}</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="#"><i class="bi bi-people"></i> Users</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="#"><i class="bi bi-truck"></i> Volunteers</a>
+                  </li>
+               </ul>
+               <ul class="navbar-nav ms-auto">
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                     <img src="https://randomuser.me/api/portraits/women/45.jpg" class="user-profile me-1"> Admin User
+                     </a>
+                     <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Profile</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i> Settings</a></li>
+                        <li>
+                           <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/logout/"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <!-- Main Content -->
+      <div class="container py-4">
+         <div class="row g-4">
+            <div class="dashboard-section">
+               <div class="d-flex justify-content-between align-items-center mb-4">
+                  <h3 class="section-title"><i class="bi bi-list-check"></i>Pending list</h3>
+                  <!-- <a href="#" class="btn btn-outline-success">View All</a> -->
+               </div>
+               {% for item in pending_items %}
+               <a href="{% url 'refurbished_details_to_admin' item.id %}" style="text-decoration: none; color: inherit;">
+               <div class="listing-item">
+                  <div class="row align-items-center">
+                     <div class="col-md-2 mb-3 mb-md-0">
+                        {% if item.images.first %}
+                           <img src="{{ item.images.first.image.url }}" class="listing-img" alt="{{ item.product_name }}">
+                        {% else %}
+                           <img src="{% static 'images/no-image.png' %}" class="listing-img" alt="No Image">
+                        {% endif %}
+                     </div>
+                     <div class="col-md-6">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                           <h5 class="listing-title mb-0">{{ item.product_name }}</h5>
+                           <span class="listing-status 
+                              {% if item.listing_status == 'pending' %}
+                              status-pending
+                              {% elif item.listing_status == 'approved' %}
+                              status-approved
+                              {% elif item.listing_status == 'rejected' %}
+                              status-rejected
+                              {% endif %}
+                              ">
+                           {{ item.listing_status|title }}
+                           </span>
+                        </div>
+                        <p class="text-muted small mb-2">{{ item.description }}</p>
+                        <!-- Specifications -->
+                        <ul class="text-muted small mb-2">
+                           {% if item.category in "laptop mobile" %}
+                           {% if item.processor %}
+                           <li><strong>Processor:</strong> {{ item.processor }}</li>
+                           {% endif %}
+                           {% if item.ram %}
+                           <li><strong>RAM:</strong> {{ item.ram }}</li>
+                           {% endif %}
+                           {% if item.storage %}
+                           <li><strong>Storage:</strong> {{ item.storage }}</li>
+                           {% endif %}
+                           {% if item.display_size and item.category == "laptop" %}
+                           <li><strong>Display Size:</strong> {{ item.display_size }}</li>
+                           {% endif %}
+                           {% elif item.category in "fridge ac" %}
+                           {% if item.capacity %}
+                           <li><strong>Capacity:</strong> {{ item.capacity }}</li>
+                           {% endif %}
+                           {% if item.door and item.category == "fridge" %}
+                           <li><strong>Door Type:</strong> {{ item.door }}</li>
+                           {% endif %}
+                           {% if item.energy_rating %}
+                           <li><strong>Energy Rating:</strong> {{ item.energy_rating }}</li>
+                           {% endif %}
+                           {% endif %}
+                           {% if item.warranty %}
+                           <li><strong>Warranty:</strong> {{ item.warranty }}</li>
+                           {% endif %}
+                           {% if item.extra_info %}
+                           <li><strong>Extra Info:</strong> {{ item.extra_info }}</li>
+                           {% endif %}
+                        </ul>
+                        <div class="listing-meta">
+                           <span class="me-3"><i class="bi bi-calendar"></i> Listed: {{ item.submitted_at|timesince }} ago</span>
+                           <span class="me-3"><i class="bi bi-currency-rupee"></i>{{ item.price }}</span>
+                        </div>
+                     </div>
+                     <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        {% if item.listing_status == 'pending' %}
+                        <form method="POST" action="{% url 'approve_refurbished' item.id %}" class="d-inline">
+                           {% csrf_token %}
+                           <button type="submit" class="btn btn-success btn-sm me-2">Approve</button>
+                        </form>
+                        <form method="POST" action="{% url 'reject_refurbished' item.id %}" class="d-inline">
+                           {% csrf_token %}
+                           <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                        </form>
+                        {% else %}
+                        <span class="text-muted small">No action needed</span>
+                        {% endif %}
+                     </div>
+                  </div>
+               </div>
+               {% empty %}
+               <p class="text-muted">No listings found.</p>
+               </a>
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+      <!-- Add this JavaScript to handle the verification -->
+      <script>
+         document.addEventListener('DOMContentLoaded', function() {
+             // Pickup Verification
+             document.getElementById('verifyPickupBtn')?.addEventListener('click', function() {
+                 const verificationItem = this.closest('.verification-item');
+                 
+                 // Update status
+                 const statusBadge = verificationItem.querySelector('.badge');
+                 statusBadge.textContent = 'Verified';
+                 statusBadge.className = 'badge bg-success';
+                 
+                 // Update buttons
+                 this.innerHTML = '<i class="bi bi-check2-all"></i> Verified';
+                 this.className = 'btn btn-sm btn-outline-success';
+                 this.disabled = true;
+                 
+                 // Add verification time
+                 const timeElement = document.createElement('small');
+                 timeElement.className = 'text-muted';
+                 timeElement.textContent = 'Verified just now';
+                 verificationItem.querySelector('.btn-group').replaceWith(timeElement);
+                 
+                 // Add to activity feed
+                 addAdminActivity('Pickup Verified', 'Order #EW-1254 - Dell Laptop pickup verified', 'approved');
+             });
+             
+             // Function to add admin activities
+             function addAdminActivity(type, message, status) {
+                 const activityFeed = document.getElementById('adminActivityFeed');
+                 const now = new Date();
+                 const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                 
+                 const activityItem = document.createElement('div');
+                 activityItem.className = 'activity-item';
+                 activityItem.innerHTML = `
+                     <div class="d-flex justify-content-between align-items-center mb-2">
+                         <h6 class="mb-0">${type}</h6>
+                         <span class="badge badge-${status}">${status.charAt(0).toUpperCase() + status.slice(1)}</span>
+                     </div>
+                     <p class="mb-1">${message}</p>
+                     <small class="activity-time"><i class="bi bi-clock me-1"></i> Just now (${timeString})</small>
+                 `;
+                 
+                 activityFeed.insertBefore(activityItem, activityFeed.firstChild);
+                 
+                 // Limit to 10 activities
+                 if (activityFeed.children.length > 10) {
+                     activityFeed.removeChild(activityFeed.lastChild);
+                 }
+             }
+         });
+      </script>
+      <footer class="bg-dark text-white py-4 mt-5">
+         <div class="container text-center">
+            <p class="mb-0">© 2025 WastenotHub. All rights reserved. Every action helps reduce electronic waste.</p>
+         </div>
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script>
+         // You can add JavaScript functionality here
+         document.addEventListener('DOMContentLoaded', function() {
+             // Add any interactive elements here
+             console.log('Admin dashboard loaded');
+         });
+      </script>
+   </body>
+</html>

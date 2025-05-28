@@ -1,0 +1,485 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Dashboard | WastenotHub</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/dashboard_buyer.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-recycle"></i>E-WasteNotHub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/buyer_dashboard/">
+                            <i class="bi bi-house-door"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/browseProductBuy/">
+                            <i class="bi bi-search"></i> Browse
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/order_buyer/">
+                            <i class="bi bi-cart-check"></i> My Orders
+                            <span class="badge bg-light text-dark ms-1">3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-heart"></i> Saved Items
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="user-profile me-1">
+                            {{ request.user.first_name }} {{ request.user.last_name }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/logout/">
+                                <i class="bi bi-box-arrow-right me-2"></i> Logout
+                            </a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1 class="welcome-title">Welcome Back, Buyer!</h1>
+            <p class="welcome-text">
+                Ready to give electronics a second life? Browse our collection of quality e-waste products and contribute to a greener planet with every purchase.
+            </p>
+            <a href="#" class="btn btn-primary btn-lg">
+                <i class="bi bi-search me-2"></i> Browse E-Waste
+            </a>
+        </div>
+
+        <!-- Environmental Impact -->
+        <div class="impact-stats">
+            <div class="row text-center">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Items Recycled</div>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="stat-number">2.5kg</div>
+                    <div class="stat-label">E-Waste Diverted</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-number">15kg</div>
+                    <div class="stat-label">CO₂ Saved</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="row g-4 mb-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="card-body">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-search icon"></i>
+                        </div>
+                        <h3 class="card-title">Browse E-Waste</h3>
+                        <p class="card-text">
+                            Explore our extensive collection of electronics looking for a new home. Find laptops, smartphones, and other devices at eco-friendly prices.
+                        </p>
+                        <a href="#" class="btn btn-primary">
+                            Start Browsing <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="card-body">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-cart-check icon"></i>
+                        </div>
+                        <h3 class="card-title">My Orders</h3>
+                        <p class="card-text">
+                            Track your current orders, view past purchases, and manage your e-waste collection history all in one place.
+                        </p>
+                        <a href="#" class="btn btn-primary">
+                            View Orders <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="card-body">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-heart icon"></i>
+                        </div>
+                        <h3 class="card-title">Saved Items</h3>
+                        <p class="card-text">
+                            View your saved items and wishlist. Get notified when similar products become available.
+                        </p>
+                        <a href="#" class="btn btn-primary">
+                            View Saved <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Orders -->
+        <!-- Replace the Recent Orders section with this enhanced version -->
+<div class="dashboard-section">
+    <h3 class="section-title"><i class="bi bi-cart-check"></i> Recent Orders</h3>
+    
+    <!-- Order 1 - In Transit -->
+    <div class="order-card">
+        <div class="row align-items-center">
+            <div class="col-md-2 mb-3 mb-md-0">
+                <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="img-fluid rounded" alt="Product">
+            </div>
+            <div class="col-md-5">
+                <h5>Samsung Galaxy S8</h5>
+                <p class="text-muted small mb-2">Good condition • Includes charger</p>
+                <div class="d-flex align-items-center">
+                    <span class="product-price me-3">₹6,500</span>
+                    <span class="product-location"><i class="bi bi-geo-alt"></i> Bangalore</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <span class="order-status status-shipped">In Transit</span>
+                <div class="small text-muted mt-1">Expected by 5:00 PM</div>
+            </div>
+            <div class="col-md-2 text-md-end mt-3 mt-md-0">
+                <button class="btn btn-outline-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#orderDetails1">Details</button>
+            </div>
+        </div>
+        
+        <!-- Expanded Order Details -->
+        <div class="collapse mt-3" id="orderDetails1">
+            <div class="border-top pt-3">
+                <h6><i class="bi bi-truck me-2"></i>Delivery Information</h6>
+                <div class="alert alert-info mt-2">
+                    <i class="bi bi-info-circle me-2"></i> Your order is on the way! Contact the volunteer if needed.
+                </div>
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                    <span class="badge bg-light text-dark"><i class="bi bi-person-badge"></i> Volunteer: Rahul Sharma</span>
+                    <span class="badge bg-light text-dark"><i class="bi bi-telephone"></i> +91 98765 43210</span>
+                    <span class="badge bg-light text-dark"><i class="bi bi-geo-alt"></i> Current Location: 3km away</span>
+                </div>
+                
+                <!-- Status Timeline -->
+                <h6 class="mt-3"><i class="bi bi-activity me-2"></i>Order Status</h6>
+                <div class="timeline mt-3">
+                    <div class="timeline-item completed">
+                        <div class="timeline-point"></div>
+                        <div class="timeline-content">
+                            <h6>Order Placed</h6>
+                            <p class="text-muted small mb-0">March 20, 2025 - 10:15 AM</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item completed">
+                        <div class="timeline-point"></div>
+                        <div class="timeline-content">
+                            <h6>Pickup Confirmed</h6>
+                            <p class="text-muted small mb-0">March 25, 2025 - 2:15 PM</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item completed">
+                        <div class="timeline-point"></div>
+                        <div class="timeline-content">
+                            <h6>Admin Verified</h6>
+                            <p class="text-muted small mb-0">March 25, 2025 - 2:30 PM</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item current">
+                        <div class="timeline-point"></div>
+                        <div class="timeline-content">
+                            <h6>In Transit</h6>
+                            <p class="text-muted small mb-0">March 25, 2025 - 3:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-point"></div>
+                        <div class="timeline-content">
+                            <h6>Delivery</h6>
+                            <p class="text-muted small mb-0">Pending</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Order 2 - Delivered -->
+    <div class="order-card">
+        <div class="row align-items-center">
+            <div class="col-md-2 mb-3 mb-md-0">
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="img-fluid rounded" alt="Product">
+            </div>
+            <div class="col-md-5">
+                <h5>MacBook Air 2015</h5>
+                <p class="text-muted small mb-2">Working condition • 128GB SSD</p>
+                <div class="d-flex align-items-center">
+                    <span class="product-price me-3">₹12,000</span>
+                    <span class="product-location"><i class="bi bi-geo-alt"></i> Mumbai</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <span class="order-status status-delivered">Delivered</span>
+                <div class="small text-muted mt-1">March 20, 2025</div>
+            </div>
+            <div class="col-md-2 text-md-end mt-3 mt-md-0">
+                <button class="btn btn-outline-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#orderDetails2">Details</button>
+            </div>
+        </div>
+        
+        <!-- Expanded Order Details -->
+        <div class="collapse mt-3" id="orderDetails2">
+            <div class="border-top pt-3">
+                <h6><i class="bi bi-check-circle me-2"></i>Delivery Confirmed</h6>
+                <div class="alert alert-success mt-2">
+                    <i class="bi bi-check-circle me-2"></i> Thank you for choosing sustainable electronics!
+                </div>
+                
+                <!-- Status Timeline -->
+                <h6 class="mt-3"><i class="bi bi-activity me-2"></i>Order History</h6>
+                <div class="timeline mt-3">
+                    <div class="timeline-item completed">
+                        <div class="timeline-point"></div>
+                        <div class="timeline-content">
+                            <h6>Order Placed</h6>
+                            <p class="text-muted small mb-0">March 15, 2025 - 11:30 AM</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item completed">
+                        <div class="timeline-point"></div>
+                        <div class="timeline-content">
+                            <h6>Pickup Confirmed</h6>
+                            <p class="text-muted small mb-0">March 18, 2025 - 10:00 AM</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item completed">
+                        <div class="timeline-point"></div>
+                        <div class="timeline-content">
+                            <h6>Admin Verified</h6>
+                            <p class="text-muted small mb-0">March 18, 2025 - 10:30 AM</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item completed">
+                        <div class="timeline-point"></div>
+                        <div class="timeline-content">
+                            <h6>Delivered</h6>
+                            <p class="text-muted small mb-0">March 20, 2025 - 3:45 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-3">
+                    <button class="btn btn-outline-success btn-sm me-2">
+                        <i class="bi bi-star me-1"></i> Rate Product
+                    </button>
+                    <button class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-recycle me-1"></i> Recycle Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="text-center mt-4">
+        <a href="#" class="btn btn-outline-primary">
+            View All Orders <i class="bi bi-arrow-right ms-2"></i>
+        </a>
+    </div>
+</div>
+
+<!-- Add this CSS to your style section -->
+<style>
+    /* Timeline Styles */
+    .timeline {
+        position: relative;
+        padding-left: 30px;
+    }
+    
+    .timeline-item {
+        position: relative;
+        padding-bottom: 20px;
+    }
+    
+    .timeline-item:last-child {
+        padding-bottom: 0;
+    }
+    
+    .timeline-point {
+        position: absolute;
+        left: -30px;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #e9ecef;
+        border: 3px solid #e9ecef;
+    }
+    
+    .timeline-item.completed .timeline-point {
+        background-color: var(--success-color);
+        border-color: var(--success-color);
+    }
+    
+    .timeline-item.current .timeline-point {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        animation: pulse 2s infinite;
+    }
+    
+    .timeline-content {
+        padding-left: 15px;
+    }
+    
+    .timeline-item.completed h6 {
+        color: var(--success-color);
+    }
+    
+    .timeline-item.current h6 {
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    
+    /* Additional Status Styles */
+    .status-intransit {
+        background-color: rgba(33, 150, 243, 0.1);
+        color: var(--info-color);
+    }
+    
+    .status-verified {
+        background-color: rgba(233, 196, 106, 0.1);
+        color: var(--accent-color);
+    }
+</style>
+
+<!-- Add this JavaScript to handle interactions -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // You can add interactive elements here
+        // For example, live tracking updates could be implemented
+        console.log('Enhanced buyer dashboard loaded');
+        
+        // Example of tracking update (would be connected to real API in production)
+        setInterval(function() {
+            const trackingBadge = document.querySelector('.order-status.status-shipped');
+            if (trackingBadge) {
+                const distanceOptions = ['5km away', '4km away', '3km away', '2km away', '1km away', 'Nearby'];
+                const randomDistance = distanceOptions[Math.floor(Math.random() * distanceOptions.length)];
+                const locationBadge = document.querySelector('.badge.bg-light.text-dark:nth-child(3)');
+                if (locationBadge) {
+                    locationBadge.innerHTML = `<i class="bi bi-geo-alt"></i> Current Location: ${randomDistance}`;
+                }
+            }
+        }, 10000); // Update every 10 seconds
+    });
+</script>
+
+        <!-- Recently Added Products -->
+        <div class="dashboard-section">
+            <h3 class="section-title"><i class="bi bi-lightning"></i> Recommended For You</h3>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="product-img" alt="Laptop">
+                        <div class="product-body">
+                            <span class="badge-condition badge-good">Good Condition</span>
+                            <h5 class="product-title">Dell Latitude Laptop</h5>
+                            <p class="text-muted small mb-2">2 years old • Comes with charger</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">₹4,500</span>
+                                <span class="product-location"><i class="bi bi-geo-alt"></i> Bangalore</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="product-img" alt="Smartphone">
+                        <div class="product-body">
+                            <span class="badge-condition badge-new">Like New</span>
+                            <h5 class="product-title">iPhone 11 Pro</h5>
+                            <p class="text-muted small mb-2">1 year old • 64GB • Original box</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">₹18,000</span>
+                                <span class="product-location"><i class="bi bi-geo-alt"></i> Mumbai</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <img src="https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" class="product-img" alt="Monitor">
+                        <div class="product-body">
+                            <span class="badge-condition badge-good">Working Condition</span>
+                            <h5 class="product-title">HP 24-inch Monitor</h5>
+                            <p class="text-muted small mb-2">3 years old • No dead pixels</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">₹3,200</span>
+                                <span class="product-location"><i class="bi bi-geo-alt"></i> Delhi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-primary">
+                    View All Products <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 WastenotHub. All rights reserved. Every purchase helps reduce electronic waste.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // You can add JavaScript functionality here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add any interactive elements here
+            console.log('Buyer dashboard loaded');
+        });
+    </script>
+</body>
+</html>

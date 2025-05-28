@@ -1,0 +1,45 @@
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<h2 class="mb-5 text-center fw-bold text-primary display-6">💬 What Our Users Say</h2>
+
+<div class="row justify-content-center">
+  {% for fb in feedbacks %}
+    <div class="col-lg-8 col-md-10">
+      <div class="card mb-4 shadow border-0 rounded-4">
+        <div class="card-body p-4">
+          <div class="d-flex align-items-center mb-3">
+            <div class="rounded-circle bg-primary text-white d-flex justify-content-center align-items-center me-3" 
+                 style="width: 50px; height: 50px; font-size: 20px; font-weight: bold;">
+              {{ fb.user.first_name|default:"?"|first|upper }}
+            </div>
+            <div>
+              <h5 class="mb-0 text-capitalize fw-semibold">
+                {{ fb.user.first_name|default:"Anonymous" }}
+              </h5>
+              <small class="text-muted text-capitalize">{{ fb.user.user_type|default:"Guest" }}</small>
+            </div>
+          </div>
+          <p class="card-text text-secondary fs-5">
+            <i class="bi bi-chat-quote-fill me-2 text-primary"></i>{{ fb.text }}
+          </p>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <div class="text-center">
+      <p class="text-muted fs-5">No feedback submitted yet.</p>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="text-center mt-5">
+  <a href="{% url 'user_login' %}?next={% url 'give_feedback' %}" 
+     class="btn btn-lg btn-primary rounded-pill px-5 shadow-sm">
+    ✍️ Give Your Feedback
+  </a>
+</div>
+

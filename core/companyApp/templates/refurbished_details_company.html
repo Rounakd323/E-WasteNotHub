@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel Test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/dashboard_seller.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/browse_e_waste.css' %}"> -->
+    <style>
+        .test-carousel {
+            max-width: 500px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+        }
+        /* Ensure carousel-inner has a defined height */
+        .carousel-inner {
+            height: 400px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-recycle"></i> WastenotHub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/company_dashboard/"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                    </li>
+    
+                    <!-- Dropdown for Manage Listings -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="manageDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-list-task"></i> Manage Listings
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/post_refurbished/"><i class="bi bi-plus-circle"></i> Add Listing</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-list-check"></i> My Listings <span class="badge bg-light text-dark ms-1">5</span></a></li>
+                            <li><a class="dropdown-item" href="/order_company/"><i class="bi bi-cart-check"></i>Your Orders <span class="badge bg-light text-dark ms-1">2</span></a></li>
+                            <li><a class="dropdown-item" href="/order_to_company/"><i class="bi bi-box-seam"></i> Product Orders <span class="badge bg-light text-dark ms-1">4</span></a></li>
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/browse_E_Waste/"><i class="bi bi-bag-fill"></i> Browse e Waste <span class="badge bg-light text-dark ms-1">2</span></a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/company_cart/"><i class="bi bi-cart-check"></i> Company Cart <span class="badge bg-light text-dark ms-1">2</span></a>
+                    </li>
+                </ul>
+    
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" class="user-profile me-1"> Priya Sharma
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/logout/"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+    <div class="row">
+        <!-- Carousel Section -->
+        <div class="col-md-6">
+            <div id="refurbishedCarousel" class="carousel slide test-carousel" data-bs-ride="carousel" style="min-height: 300px; background-color: #f5f5f5;">
+                <div class="carousel-inner h-100">
+                    {% if item.images.count %}
+                        {% for img in item.images.all %}
+                            <div class="carousel-item h-100 {% if forloop.first %}active{% endif %}">
+                                <div class="d-flex justify-content-center align-items-center h-100 p-3">
+                                    <img src="{{ img.image.url }}" 
+                                         class="d-block img-fluid mx-auto mh-100" 
+                                         alt="{{ item.product_name }}" 
+                                         style="object-fit: contain; max-height: 400px;">
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="carousel-item active h-100">
+                            <div class="d-flex justify-content-center align-items-center h-100">
+                                <p class="text-muted">No images available.</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% if item.images.count > 1 %}
+                    <button class="carousel-control-prev" type="button" data-bs-target="#refurbishedCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#refurbishedCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="col-md-6">
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <h2 class="card-title text-primary fw-bold mb-2">{{ item.product_name }}</h2>
+            <h4 class="text-success fw-semibold mb-3">₹{{ item.price }}</h4>
+
+            <p class="text-muted mb-2"><i class="bi bi-info-circle"></i> <strong>Description:</strong><br> {{ item.description }}</p>
+
+            {% if item.warranty %}
+                <p class="text-muted"><i class="bi bi-shield-check"></i> <strong>Warranty:</strong> {{ item.warranty }}</p>
+            {% endif %}
+
+            <!-- Specifications -->
+            <div class="mt-4">
+                <h5 class="fw-bold mb-3"><i class="bi bi-gear-fill"></i> Specifications</h5>
+                <ul class="list-group list-group-flush small">
+                    {% if item.category == "laptop" or item.category == "mobile" %}
+                        <li class="list-group-item"><strong>RAM:</strong> {{ item.ram }}</li>
+                        <li class="list-group-item"><strong>Storage:</strong> {{ item.storage }}</li>
+                        <li class="list-group-item"><strong>Processor:</strong> {{ item.processor }}</li>
+                        {% if item.category == "laptop" %}
+                            <li class="list-group-item"><strong>Display Size:</strong> {{ item.display_size }}</li>
+                        {% endif %}
+                    {% elif item.category == "fridge" %}
+                        <li class="list-group-item"><strong>Capacity:</strong> {{ item.capacity }}</li>
+                        <li class="list-group-item"><strong>Door Type:</strong> {{ item.door }}</li>
+                        <li class="list-group-item"><strong>Energy Rating:</strong> {{ item.energy_rating }}</li>
+                    {% elif item.category == "ac" %}
+                        <li class="list-group-item"><strong>Capacity:</strong> {{ item.capacity }}</li>
+                        <li class="list-group-item"><strong>Energy Rating:</strong> {{ item.energy_rating }}</li>
+                    {% elif item.category == "other" %}
+                        <li class="list-group-item"><strong>Additional Info:</strong> {{ item.extra_info }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <!-- Buttons -->
+            <div class="mt-4">
+                <a href="#" class="btn btn-outline-success btn-sm">
+                    Edit
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.getElementById('eWasteCarousel');
+            if (carousel) {
+                const items = carousel.querySelectorAll('.carousel-item');
+                if (items.length <= 1) {
+                    // Disable cycling if only one item
+                    const carouselInstance = bootstrap.Carousel.getOrCreateInstance(carousel);
+                    carouselInstance.pause();
+                    // Hide controls
+                    const prev = carousel.querySelector('.carousel-control-prev');
+                    const next = carousel.querySelector('.carousel-control-next');
+                    if (prev) prev.style.display = 'none';
+                    if (next) next.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

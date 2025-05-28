@@ -1,0 +1,295 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available E-Waste - WastenotHub</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="{% static 'css/browse_e_waste.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard_buyer.css' %}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-recycle"></i>WastenotHub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/buyer_dashboard/">
+                            <i class="bi bi-house-door"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/browseProductBuy/">
+                            <i class="bi bi-search"></i> Browse
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/order_buyer/">
+                            <i class="bi bi-cart-check"></i> My Orders
+                            <span class="badge bg-light text-dark ms-1">3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-heart"></i> Saved Items
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="user-profile me-1">
+                            {{ request.user.first_name }} {{ request.user.last_name }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/logout/">
+                                <i class="bi bi-box-arrow-right me-2"></i> Logout
+                            </a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h2>Available E-Waste Listings</h2>
+            <p>Browse through quality electronic waste items available for purchase and responsible recycling. Each purchase helps reduce e-waste and protect our environment.</p>
+        </div>
+    </div>
+
+    <!-- Platform Stats -->
+    <div class="container">
+        <div class="platform-stats">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">1,258</div>
+                        <div class="stat-label">Items Recycled</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">586</div>
+                        <div class="stat-label">Active Sellers</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">324</div>
+                        <div class="stat-label">Verified Buyers</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">127</div>
+                        <div class="stat-label">Volunteers</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="container">
+        <div class="how-it-works">
+            <h3 class="section-title">How WastenotHub Works</h3>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="work-step">
+                        <div class="step-icon">
+                            <i class="bi bi-person-plus"></i>
+                        </div>
+                        <h5 class="step-title">1. Seller Posts</h5>
+                        <p class="step-desc">Sellers create an account and list their e-waste items with details and photos. Items await admin approval before listing.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="work-step">
+                        <div class="step-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h5 class="step-title">2. Admin Approves</h5>
+                        <p class="step-desc">Our admin team reviews each listing for quality and accuracy before making it available to buyers.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="work-step">
+                        <div class="step-icon">
+                            <i class="bi bi-cart-check"></i>
+                        </div>
+                        <h5 class="step-title">3. Buyer Purchases</h5>
+                        <p class="step-desc">Buyers browse approved listings and purchase items they need. All transactions are secure.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="work-step">
+                        <div class="step-icon">
+                            <i class="bi bi-truck"></i>
+                        </div>
+                        <h5 class="step-title">4. Volunteer Delivers</h5>
+                        <p class="step-desc">Our verified volunteers coordinate pickup and delivery, with status updates at every step.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+            <div class="row align-items-center">
+                <div class="col-lg-3 col-md-4 mb-3 mb-md-0">
+                    <h5 class="filter-title"><i class="bi bi-funnel"></i> Filter Options</h5>
+                </div>
+                <div class="col-lg-9 col-md-8 text-md-end">
+                    <button class="filter-btn active"><i class="bi bi-laptop"></i> Computers</button>
+                    <button class="filter-btn"><i class="bi bi-phone"></i> Phones</button>
+                    <button class="filter-btn"><i class="bi bi-tv"></i> TVs</button>
+                    <button class="filter-btn"><i class="bi bi-headphones"></i> Audio</button>
+                    <button class="filter-btn"><i class="bi bi-controller"></i> Gaming</button>
+                    <button class="filter-btn"><i class="bi bi-sliders"></i> More</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- E-Waste Listings -->
+        <div class="row">
+            {% for item in approved_items %}
+            <div class="col-lg-4 col-md-6">
+                <a href="{% url 'product_detail_buy' item.id %}" class="text-decoration-none text-dark">
+                    <div class="ewaste-card">
+                        {% if item.images.first %}
+                           <img src="{{ item.images.first.image.url }}" class="card-img-top" alt="{{ item.product_name }}">
+                        {% else %}
+                           <img src="{% static 'images/no-image.png' %}" class="card-img-top" alt="No Image">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.product_name }}</h5>
+                            <p class="card-text">{{ item.description|truncatewords:15 }}</p>
+                            <div class="card-price">₹{{ item.price }}</div>
+                            <small class="text-muted"><i class="bi bi-calendar me-1"></i> Posted {{ item.submitted_at|timesince }} ago</small>
+                            
+                            <!-- Optional: Show specifications -->
+                            <ul class="mt-2 small text-muted">
+                                {% if item.ram %}<li>RAM: {{ item.ram }}</li>{% endif %}
+                                {% if item.storage %}<li>Storage: {{ item.storage }}</li>{% endif %}
+                                {% if item.processor %}<li>Processor: {{ item.processor }}</li>{% endif %}
+                                {% if item.capacity %}<li>Capacity: {{ item.capacity }}</li>{% endif %}
+                                {% if item.energy_rating %}<li>Energy Rating: {{ item.energy_rating }}</li>{% endif %}
+                                {% if item.warranty %}<li>Warranty: {{ item.warranty }}</li>{% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% empty %}
+            <p class="text-muted">No approved refurbished products available.</p>
+            {% endfor %}
+        </div>
+        
+        <!-- Pagination -->
+        <nav aria-label="Page navigation" class="mt-5">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1"><i class="bi bi-chevron-left"></i></a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="footer-logo"><i class="bi bi-recycle"></i> WastenotHub</div>
+                    <p>Our mission is to reduce electronic waste by creating a sustainable marketplace for used electronics, connecting sellers, buyers, and volunteers in an eco-friendly ecosystem.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">E-Waste Listings</a></li>
+                            <li><a href="#">How It Works</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>For Users</h5>
+                        <ul>
+                            <li><a href="#">Seller Dashboard</a></li>
+                            <li><a href="#">Buyer Portal</a></li>
+                            <li><a href="#">Volunteer Program</a></li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Pricing</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="footer-links">
+                        <h5>Contact Info</h5>
+                        <ul>
+                            <li><i class="bi bi-geo-alt me-2"></i> 12/1 Green Tech Park, Kolkata, India</li>
+                            <li><i class="bi bi-telephone me-2"></i> +91 98765 43210</li>
+                            <li><i class="bi bi-envelope me-2"></i> info@wastenothub.com</li>
+                            <li><i class="bi bi-clock me-2"></i> Mon-Sat: 9AM - 6PM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="mb-0">© 2023 WastenotHub. All rights reserved. | <a href="#" style="color: var(--accent-color);">Privacy Policy</a> | <a href="#" style="color: var(--accent-color);">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple filter button active state toggle
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                // Add active class to clicked button
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post E-Waste - WastenotHub</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="{% static 'css/post_waste.css' %}">
+    <!-- <style>
+    </style> -->
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-recycle me-2"></i>WastenotHub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/seller_dashboard/">
+                            <i class="bi bi-speedometer2 me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/all_listings/">
+                            <i class="bi bi-list-ul me-1"></i>My Listings
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout/">
+                            <i class="bi bi-box-arrow-right me-1"></i>Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container text-center">
+            <h2>Post Your E-Waste</h2>
+            <p class="mb-0">Help the environment by listing your electronic waste for proper recycling</p>
+        </div>
+    </div>
+
+    <!-- Main Form Container -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="form-container">
+                    {% if messages %}
+                    <div class="mt-3">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <form action="/post_waste/" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <!-- Product Name -->
+                        <div class="mb-4">
+                            <label for="productName" class="form-label">Product Name</label>
+                            <input type="text" class="form-control" id="productName" name="name" placeholder="e.g., Old Laptop, Broken Smartphone" required>
+                            <div class="form-note">Be specific about the type and brand if possible</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="productName" class="form-label">Product Condition</label>
+                            <input type="text" class="form-control" id="productName" name="condition" placeholder="e.g., working.." required>
+                            <div class="form-note">State the condition</div>
+                        </div>
+                        
+                        <!-- Description -->
+                        <div class="mb-4">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" name="description" rows="4" placeholder="Describe the condition, age, specifications, and any issues..." required></textarea>
+                            <div class="form-note">Detailed descriptions help with proper recycling</div>
+                        </div>
+                        
+                        <!-- Image Upload -->
+                        <div class="mb-4">
+                            <label class="form-label">Upload Images</label>
+                            <input type="file" class="form-control" name="images" accept="image/*" multiple>
+                            <!-- <input type="file" class="form-control" id="exampleInputEmail1" name="images" accept="image/*" aria-describedby="emailHelp">                 -->
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="productName" class="form-label">Product Price</label>
+                            <input type="text" class="form-control" id="productName" name="price" placeholder="Enter Your Price" required>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-submit">
+                                <i class="bi bi-send-check me-2"></i>Submit for Approval
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="mb-0">© 2023 WastenotHub. All rights reserved.</p>
+            <p class="mb-0">Thank you for contributing to a greener planet!</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script>
+        // Enhance file input display
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const uploadContainer = document.querySelector('.image-upload-container');
+            const files = e.target.files;
+            
+            if (files.length > 0) {
+                uploadContainer.innerHTML = `
+                    <i class="bi bi-check-circle-fill upload-icon text-success"></i>
+                    <h5>${files.length} file(s) selected</h5>
+                    <p class="text-muted">Click to change selection</p>
+                `;
+            }
+        });
+    </script> -->
+</body>
+</html>

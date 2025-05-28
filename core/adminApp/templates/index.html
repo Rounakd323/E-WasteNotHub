@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>E-WasteNotHub - Revolutionizing E-Waste Management</title>
+    <meta name="description" content="Join India's leading e-waste management platform. Recycle electronics responsibly and build a sustainable future.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@500;600;700&family=Raleway:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+          :root {
+            --primary: #4ac431;
+            --primary-dark: #2b5c2b; /* Darkest green complement */
+            --secondary: #1b1b1b;
+            --accent: #272424;
+            --light-bg: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 15px 40px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .nav {
+            display: flex;       /* Use flexbox layout */
+             flex-wrap: nowrap;   /* No wrapping of nav items */
+             gap: 10px;           /* Optional spacing between items */
+        }
+
+        .logo {
+            width: 110px;
+        }
+
+        .logo-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .company-name {
+            font-size: 2.4rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: 1px;
+        }
+
+        .tag-line {
+            font-size: 1.1rem;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+            color: var(--accent);
+            margin-top: 2px;
+            border-top: 2px solid var(--primary);
+            padding-top: 2px;
+        }
+
+        nav ul.nav {
+            margin-left: auto;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-link {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem; /* Increased from 1.1rem */
+    color: var(--secondary) !important;
+    position: relative;
+    padding: 12px 24px !important;
+    margin: 0 6px;
+    letter-spacing: 0.6px;
+}
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: calc(100% - 40px);
+        }
+
+        .nav-link.active {
+            color: var(--primary-dark) !important;
+        }
+
+        /*Hero section*/
+        .hero-section {
+    padding-top: 150px; /* Adjusted to prevent overlap */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('interactions/images/bghero.jpg') center/cover no-repeat;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+        .hero-content {
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .btn-hero {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-hero:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+        
+        /* Stats Section */
+        /* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
+
+/* Stats Section Base Styles */
+.stats-section {
+    font-family: 'Space Grotesk', sans-serif;
+    background: #f9f9f9;
+}
+
+/* Individual Stat Box Styles */
+.stat-box {
+    border-radius: 20px;
+    padding: 40px 20px;
+    height: 220px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.stat-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.stat-number {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.stat-box p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+    max-width: 90%;
+}
+
+/* Color Themes */
+.bg-orange { background: linear-gradient(135deg, #F57C00, #FB8C00); }
+.bg-teal { background: linear-gradient(135deg, #00796B, #26A69A); }
+.bg-red { background: linear-gradient(135deg, #D32F2F, #E53935); }
+.bg-purple { background: linear-gradient(135deg, #7B1FA2, #9C27B0); }
+.bg-peach { background: linear-gradient(135deg, #c75151, #e57373); }
+.bg-black { background: #000; color: #fff; }
+
+ 
+#how-it-works {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.py-5 {
+    padding-bottom: 3rem !important; 
+}
+#how-it-works.py-5 {
+    padding-bottom: 1rem !important; 
+}
+
+        /* Vision & Mission Section */
+        .circle-vmv-section {
+  padding: 80px 10%;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+}
+
+.circle-vmv-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.circle-vmv-left img {
+  max-width: 360px;
+  width: 100%;
+  height: auto;
+}
+
+.circle-vmv-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.vmv-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.vmv-icon {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border: 3px solid #ccc;
+  border-radius: 50%;
+  padding: 8px;
+  background-color: #fff;
+}
+
+.vmv-heading {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.vmv-block:nth-child(1) .vmv-heading { color: #007BFF; }   /* Vision - Blue */
+.vmv-block:nth-child(2) .vmv-heading { color: #28a745; }   /* Mission - Green */
+.vmv-block:nth-child(3) .vmv-heading { color: #000000; }   /* Values - Black */
+
+.vmv-block p {
+  font-size: 1.3rem;
+  line-height: 2;
+  color: #444;
+  margin: 0;
+}
+
+/* Animation trigger class */
+.animate-vmv.vmv-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media screen and (max-width: 768px) {
+  .circle-vmv-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .vmv-block {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .vmv-heading {
+    font-size: 2rem;
+  }
+
+  .vmv-block p {
+    font-size: 1.1rem;
+  }
+}
+
+        /* Want to Buy Section */
+        .want-to-buy {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f4fafa, #e0f7fa);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.want-to-buy h2 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #1b3a4b;
+    margin-bottom: 10px;
+}
+
+.want-to-buy .lead {
+    font-size: 20px;
+    color: #4a4a4a;
+    margin-bottom: 40px;
+}
+
+.scroll-container {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 30px 0;
+    scrollbar-width: thin;
+    scrollbar-color: #aaa #eaeaea;
+}
+
+.scroll-container::-webkit-scrollbar {
+    height: 10px;
+}
+.scroll-container::-webkit-scrollbar-track {
+    background: #eaeaea;
+    border-radius: 10px;
+}
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.product-slider {
+    display: inline-flex;
+    gap: 30px;
+    padding: 10px 20px;
+}
+
+.product-card {
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    width: 260px;
+    display: inline-block;
+}
+
+.product-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.product-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 20px;
+    white-space: normal;
+    text-align: center;
+}
+
+.product-info h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a2e35;
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+       
+        /* Effects Section */
+        .effects-section {
+        background-color: #e8eff5 !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 80px 0;
+}
+
+.effects-section h2 {
+    color: #ffffff;
+    font-size: 2.8rem;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+}
+
+.effects-section p {
+    color: #d3dce6;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.effects-section .card {
+    transition: all 0.3s ease;
+    border-radius: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.effects-section .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.effects-section .card-img-top {
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 4px solid #e74c3c;
+    transition: opacity 0.3s ease;
+}
+
+.effects-section .card:hover .card-img-top {
+    opacity: 0.92;
+}
+
+.effects-section .card-body {
+    padding: 28px;
+}
+
+.effects-section .card-body h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #2c3e50;
+    font-family: 'Playfair Display', serif;
+}
+
+.effects-section li {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #4a4a4a;
+    transition: color 0.2s ease;
+}
+
+.effects-section li:hover {
+    color: #1a1a1a !important;
+}
+
+.effects-section .info-line {
+    border-top: 1px solid #edf2f7;
+    color: #718096;
+    font-size: 1rem;
+    margin-top: 15px;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+}
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h5 {
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .vision-title, .mission-title {
+                font-size: 1.8rem;
+            }
+            
+            .vision-text, .mission-text {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .nav-link {
+                font-size: 1rem;
+                padding: 8px 15px !important;
+            }
+            
+            .vision-title, .mission-title {
+                font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo-container {
+                gap: 10px;
+            }
+            
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .logo {
+                width: 50px;
+            }
+        }
+        .hero-section {
+    background: url('static/interactions/images/bghero.jpg') no-repeat center center/cover;
+    padding: 100px 0;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Optional dark overlay for readability */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        header {
+  display: flex;
+  flex-wrap: nowrap;       /* no wrapping */
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 1;          /* allow shrinking */
+  min-width: 0;            /* enable flex shrink */
+}
+
+.logo-stack {
+  white-space: nowrap;
+  flex-shrink: 1;          /* allow tagline & company name to shrink */
+  min-width: 0;
+  font-size: 0.9rem;       /* smaller font size helps */
+}
+
+nav ul.nav {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+  flex-shrink: 1;          /* allow nav to shrink */
+  min-width: 0;
+}
+
+nav ul.nav li.nav-item a.nav-link {
+  white-space: nowrap;     /* prevent link text wrapping */
+  font-size: 0.9rem;       /* reduce font size */
+  padding: 0.25rem 0.5rem;
+}
+
+
+    </style>
+</head>
+<body>
+   <!-- Header Section -->
+<header class="d-flex align-items-center justify-content-between">
+    <div class="logo-container">
+        <img src="static/interactions/images/logo.png" alt="WastenotHub Logo" class="logo">
+        <div class="logo-stack">
+            <div class="company-name">E-WasteNotHub</div>
+            <div class="tag-line">Turning Trash into Tomorrow's Treasure</div>
+        </div>
+    </div>
+    <nav>
+        <ul class="nav">
+            <li class="nav-item"><a class="nav-link active" href="{%url 'home' %}">HOME</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">ABOUT US</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'privacyPolicy' %}">PRIVACY POLICY</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">CONTACT US</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'user_login' %}">LOG-IN</a></li>
+            <!-- <li class="nav-item"><a class="nav-link" href="{% url 'user_login' %}?next={% url 'give_feedback' %}">GIVE FEEDBACK</a></li> -->
+            <li class="nav-item"><a class="nav-link" href="{% url 'feedback_page' %}">CUSTOMER FEEDBACK</a></li>
+
+        </ul>
+    </nav>
+</header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">REDUCE • REUSE • RECYCLE</h1>
+                <p class="hero-subtitle">Transforming E-Waste into Sustainable Opportunities</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="{% url 'register' %}" class="btn btn-hero">Join Our Mission</a>
+                    <a href="#how-it-works" class="btn btn-hero btn-outline-light">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+<section class="stats-section text-center py-5">
+    <div class="container">
+        <div class="row justify-content-center g-4">
+            <div class="col-md-4 col-lg-2">
+                <div class="stat-box bg-orange">
+                    <h2 class="stat-number" data-target="9458">0kg</h2>
+                    <p>Total Waste Diverted from Landfills</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-2">
+                <div class="stat-box bg-teal">
+                    <h2 class="stat-number" data-target="1395">0kg</h2>
+                    <p>Waste reduction at source</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-2">
+                <div class="stat-box bg-red">
+                    <h2 class="stat-number" data-target="17720">0+</h2>
+                    <p>People impacted through long-term programs</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-2">
+                <div class="stat-box bg-purple">
+                    <h2 class="stat-number" data-target="13168">0+</h2>
+                    <p>People reached through short-term programs</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-2">
+                <div class="stat-box bg-peach">
+                    <h2 class="stat-number" data-target="500">0+</h2>
+                    <p>People became a part of this mission</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-2">
+                <div class="stat-box bg-black">
+                    <h2 class="stat-number" data-target="8">0+</h2>
+                    <p>Campaigns run so far</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- How It Works Section -->
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+
+<section id="how-it-works" class="py-5" style="background: linear-gradient(135deg, #e3f2fd, #fce4ec); font-family: 'Raleway', sans-serif;">
+    <div class="container">
+        <!-- Heading -->
+        <div class="row justify-content-center mb-5 animate-on-scroll">
+            <div class="col-lg-8 text-center">
+                <h2 class="display-5 fw-bold" style="letter-spacing: 0.5px; color: #333;">How E-WasteNotHub Works</h2>
+                <p class="lead fs-5 text-muted" style="letter-spacing: 0.4px;">A simple three-step process to make e-waste recycling effortless</p>
+            </div>
+        </div>
+
+        <!-- Steps -->
+        <div class="row text-center">
+            <div class="col-md-4 animate-on-scroll mb-4" data-delay="100">
+                <div class="p-4">
+                    <div class="bg-primary bg-opacity-25 text-primary rounded-circle d-inline-flex align-items-center justify-content-center shadow-sm" style="width: 90px; height: 90px;">
+                        <i class="bi bi-upload" style="font-size: 2.8rem;"></i>
+                    </div>
+                    <h3 class="mt-4 h4 fw-bold">1. Post Your E-Waste</h3>
+                    <p class="text-muted fs-5" style="line-height: 1.6;">Sellers list their e-waste items with details and photos for admin approval.</p>
+                </div>
+            </div>
+            <div class="col-md-4 animate-on-scroll mb-4" data-delay="200">
+                <div class="p-4">
+                    <div class="bg-success bg-opacity-25 text-success rounded-circle d-inline-flex align-items-center justify-content-center shadow-sm" style="width: 90px; height: 90px;">
+                        <i class="bi bi-truck" style="font-size: 2.8rem;"></i>
+                    </div>
+                    <h3 class="mt-4 h4 fw-bold">2. Schedule Pickup</h3>
+                    <p class="text-muted fs-5" style="line-height: 1.6;">Our verified eco-couriers collect the items at your preferred time.</p>
+                </div>
+            </div>
+            <div class="col-md-4 animate-on-scroll mb-4" data-delay="300">
+                <div class="p-4">
+                    <div class="bg-warning bg-opacity-25 text-warning rounded-circle d-inline-flex align-items-center justify-content-center shadow-sm" style="width: 90px; height: 90px;">
+                        <i class="bi bi-recycle" style="font-size: 2.8rem;"></i>
+                    </div>
+                    <h3 class="mt-4 h4 fw-bold">3. Responsible Recycling</h3>
+                    <p class="text-muted fs-5" style="line-height: 1.6;">Items are either refurbished for buyers or recycled following environmental standards.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+            
+
+     <!-- Vision, Mission & Values Section -->
+     <section class="circle-vmv-section">
+        <div class="circle-vmv-container">
+          <div class="circle-vmv-left">
+            <img src="static/interactions/images/vision.jpg" alt="Vision Mission Values Circle">
+          </div>
+          <div class="circle-vmv-right">
+      
+            <div class="vmv-block animate-vmv">
+              <img src="static/interactions/images/vision-icon.png" alt="Vision Icon" class="vmv-icon">
+              <div>
+                <h3 class="vmv-heading">OUR VISION</h3>
+                <p>
+                  To create a world where every piece of electronic waste is responsibly managed,
+                  transforming environmental challenges into sustainable opportunities for communities worldwide.
+                </p>
+              </div>
+            </div>
+      
+            <div class="vmv-block animate-vmv">
+              <img src="static/interactions/images/vision-mission.jpg" alt="Mission Icon" class="vmv-icon">
+              <div>
+                <h3 class="vmv-heading">OUR MISSION</h3>
+                <p>
+                  We empower individuals and businesses to take action against e-waste through an innovative
+                  platform that connects sellers, buyers, and eco-couriers. By facilitating responsible recycling and reuse,
+                  we’re building a circular economy that benefits both people and the planet.
+                </p>
+              </div>
+            </div>
+      
+            <div class="vmv-block animate-vmv">
+              <img src="static/interactions/images/values-icon.png" alt="Values Icon" class="vmv-icon">
+              <div>
+                <h3 class="vmv-heading">OUR VALUES</h3>
+                <p>
+                  We stand by environmental responsibility, transparency, and inclusivity.
+                  We believe in creating real impact through collective action, honest communication, and
+                  a commitment to building a cleaner, greener future for all.
+                </p>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </section>                                    
+      
+       <!-- Want to Buy Section -->
+       <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+<section class="want-to-buy">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2>Want to Buy?</h2>
+            <p class="lead">Discover refurbished electronics and sustainable components for a greener tomorrow.</p>
+        </div>
+
+        <!-- Scrollable Container -->
+        <div class="scroll-container">
+            <div class="product-slider d-flex">
+                <div class="product-card flex-shrink-0">
+                    <img src="static/interactions/images/laptop.jpg" alt="Refurbished Laptop" class="product-img">
+                    <div class="product-info">
+                        <h3>Refurbished Laptop</h3>
+                        <p>Eco-friendly & high-performance devices</p>
+                    </div>
+                </div>
+                <div class="product-card flex-shrink-0">
+                    <img src="static/interactions/images/smartphone.jpg" alt="Recycled Smartphone" class="product-img">
+                    <div class="product-info">
+                        <h3>Recycled Smartphone</h3>
+                        <p>Give gadgets a second life</p>
+                    </div>
+                </div>
+                <div class="product-card flex-shrink-0">
+                    <img src="static/interactions/images/parts.jpg" alt="Reclaimed Parts" class="product-img">
+                    <div class="product-info">
+                        <h3>Reclaimed Parts</h3>
+                        <p>Sustainable components at lower costs</p>
+                    </div>
+                </div>
+                <div class="product-card flex-shrink-0">
+                    <img src="static/interactions/images/accessories.jpg" alt="Eco Accessories" class="product-img">
+                    <div class="product-info">
+                        <h3>Eco Accessories</h3>
+                        <p>Charge and store sustainably</p>
+                    </div>
+                </div>
+                <div class="product-card flex-shrink-0">
+                    <img src="static/interactions/images/motherboard.jpg" alt="Refurbished Motherboards" class="product-img">
+                    <div class="product-info">
+                        <h3>Refurbished Motherboards</h3>
+                        <p>Powerful, tested components</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Shopping Button -->
+        <div class="text-center mt-5">
+            <a href="{% url 'register' %}" class="btn btn-primary btn-lg px-5 py-3" style="font-family: 'Poppins', sans-serif; font-weight: 600; letter-spacing: 0.5px;">
+                Start Shopping
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<!-- E-Waste Effects Section -->
+<style>
+    .effects-section {
+        background-color: #f0f4f8; /* Soft light blue-gray */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 80px 0;
+    }
+
+    .effects-section h2 {
+        color: #2c3e50;
+        font-size: 2.8rem;
+        font-weight: 700;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .effects-section p {
+        color: #4a4a4a;
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+
+    .effects-section .card {
+        transition: all 0.3s ease;
+        border-radius: 16px;
+        background-color: #ffffff;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .effects-section .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .effects-section .card-img-top {
+        height: 220px;
+        object-fit: cover;
+        border-bottom: 4px solid #e74c3c;
+        transition: opacity 0.3s ease;
+    }
+
+    .effects-section .card:hover .card-img-top {
+        opacity: 0.92;
+    }
+
+    .effects-section .card-body {
+        padding: 28px;
+    }
+
+    .effects-section .card-body h3 {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #2c3e50;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .effects-section li {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #4a4a4a;
+        transition: color 0.2s ease;
+    }
+
+    .effects-section li:hover {
+        color: #1a1a1a !important;
+    }
+
+    .effects-section .info-line {
+        border-top: 1px solid #edf2f7;
+        color: #718096;
+        font-size: 1rem;
+        margin-top: 15px;
+        padding-top: 10px;
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+<section class="effects-section py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-3">The Impact of E-Waste</h2>
+            <p class="text-muted" style="font-family: 'Poppins', sans-serif; font-size: 1.1rem;">
+                Understanding the hidden consequences of improper disposal
+            </p>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Environmental Poisoning -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0">
+                    <img src="static/interactions/images/pollution.jpg" class="card-img-top" alt="Environmental pollution">
+                    <div class="card-body p-4">
+                        <h3 class="h5 mb-3">
+                            <i class="bi bi-droplet-fill me-2" style="color: #e74c3c;"></i>
+                            Environmental Poisoning
+                        </h3>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2 d-flex align-items-start">
+                                <i class="bi bi-chevron-right mt-1 me-2" style="color: #4ac431; font-size: 0.9rem;"></i>
+                                <span>Lead contaminates water sources</span>
+                            </li>
+                            <li class="mb-2 d-flex align-items-start">
+                                <i class="bi bi-chevron-right mt-1 me-2" style="color: #4ac431; font-size: 0.9rem;"></i>
+                                <span>Mercury enters food chains</span>
+                            </li>
+                            <li class="pt-2 mt-3 d-flex align-items-center info-line">
+                                <i class="bi bi-info-circle me-2" style="color: #4ac431;"></i>
+                                50M+ tons generated annually
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Human Toll -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0">
+                    <img src="static/interactions/images/health.jpg" class="card-img-top" alt="Health hazards">
+                    <div class="card-body p-4">
+                        <h3 class="h5 mb-3">
+                            <i class="bi bi-heart-pulse-fill me-2" style="color: #e74c3c;"></i>
+                            Human Toll
+                        </h3>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2 d-flex align-items-start">
+                                <i class="bi bi-chevron-right mt-1 me-2" style="color: #4ac431; font-size: 0.9rem;"></i>
+                                <span>Respiratory diseases</span>
+                            </li>
+                            <li class="mb-2 d-flex align-items-start">
+                                <i class="bi bi-chevron-right mt-1 me-2" style="color: #4ac431; font-size: 0.9rem;"></i>
+                                <span>Neurological damage</span>
+                            </li>
+                            <li class="pt-2 mt-3 d-flex align-items-center info-line">
+                                <i class="bi bi-info-circle me-2" style="color: #4ac431;"></i>
+                                15M+ workers at risk
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Economic Waste -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0">
+                    <img src="static/interactions/images/waste.jpg" class="card-img-top" alt="Economic waste">
+                    <div class="card-body p-4">
+                        <h3 class="h5 mb-3">
+                            <i class="bi bi-cash-stack me-2" style="color: #e74c3c;"></i>
+                            Economic Waste
+                        </h3>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2 d-flex align-items-start">
+                                <i class="bi bi-chevron-right mt-1 me-2" style="color: #4ac431; font-size: 0.9rem;"></i>
+                                <span>$57B in lost materials</span>
+                            </li>
+                            <li class="mb-2 d-flex align-items-start">
+                                <i class="bi bi-chevron-right mt-1 me-2" style="color: #4ac431; font-size: 0.9rem;"></i>
+                                <span>Gold, silver, copper wasted</span>
+                            </li>
+                            <li class="pt-2 mt-3 d-flex align-items-center info-line">
+                                <i class="bi bi-info-circle me-2" style="color: #4ac431;"></i>
+                                Only 17% recycled properly
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 animate-on-scroll">
+                    <h2 class="mb-3">Ready to Make a Difference?</h2>
+                    <p class="lead mb-lg-0">Join our growing community of environmentally conscious individuals and businesses today.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end animate-on-scroll" data-delay="100">
+                    <a href="register.html" class="btn btn-light btn-lg px-5">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 animate-on-scroll">
+                    <img src="static/interactions/images/logo.png" alt="WastenotHub Logo" class="footer-logo">
+                    <p>India's leading platform for responsible e-waste management, connecting sellers, buyers, and eco-couriers to create a sustainable future.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 animate-on-scroll" data-delay="100">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="{%url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'about' %}">About Us</a></li>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 animate-on-scroll" data-delay="200">
+                    <div class="footer-links">
+                        <h5>Services</h5>
+                        <ul>
+                            <li><a href="#">Sell E-Waste</a></li>
+                            <li><a href="#">Buy Refurbished</a></li>
+                            <li><a href="#">Eco-couriers</a></li>
+                            <li><a href="#">Corporate Solutions</a></li>
+                            <li><a href="#">Educational Programs</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 animate-on-scroll" data-delay="300">
+                    <div class="footer-links">
+                        <h5>Contact Us</h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <i class="bi bi-geo-alt me-2"></i>
+                                <a href="https://maps.app.goo.gl/gfC3c9ifTXHakvPQA" target="_blank">12/1 Green Tech Park, Kolkata, India</a>
+                            </li>
+                            <li class="mb-2"><i class="bi bi-telephone-fill me-2"></i> +91 9876543210</li>
+                            <li class="mb-2"><i class="bi bi-envelope-fill me-2"></i> hello@ewastenothub.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5" style="border-color: rgba(255,255,255,0.1);">
+            <div class="row">
+                <div class="col-md-6 animate-on-scroll">
+                    <p class="mb-md-0">&copy; 2025 WastenotHub. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end animate-on-scroll" data-delay="100">
+                    <a href="privacy.html" class="text-white-50 me-3">Privacy Policy</a>
+                    <a href="terms.html" class="text-white-50">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animated');
+                }
+            });
+        }
+        
+        // Set animation delays
+        document.addEventListener('DOMContentLoaded', function() {
+            const delayElements = document.querySelectorAll('[data-delay]');
+            delaydelayElements.forEach(el => {
+                const delay = el.getAttribute('data-delay');
+                el.style.transitionDelay = `${delay}ms`;
+            });
+            
+            // Initial check
+            animateOnScroll();
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('vmv-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.animate-vmv').forEach(el => {
+    observer.observe(el);
+  });
+    </script>
+    <script>
+    const counters = document.querySelectorAll('.stat-number');
+    let animated = false;
+
+    function animateCounter(counter, target, suffix) {
+        let count = 0;
+        const duration = 2000; // Total duration in ms
+        const frameRate = 60; // Frames per second
+        const totalFrames = (duration / 1000) * frameRate;
+        const increment = target / totalFrames;
+
+        function update() {
+            count += increment;
+            if (count < target) {
+                counter.textContent = Math.floor(count).toLocaleString() + suffix;
+                requestAnimationFrame(update);
+            } else {
+                counter.textContent = target.toLocaleString() + suffix;
+            }
+        }
+
+        update();
+    }
+
+    function triggerAnimation() {
+        const section = document.querySelector('.stats-section');
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight && !animated) {
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const suffix = counter.textContent.replace(/[0-9,]/g, '');
+                animateCounter(counter, target, suffix);
+            });
+            animated = true;
+        }
+    }
+
+    window.addEventListener('scroll', triggerAnimation);
+    window.addEventListener('load', triggerAnimation);
+</script>
+</body>
+</html>

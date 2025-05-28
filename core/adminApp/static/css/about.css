@@ -1,0 +1,120 @@
+:root {
+    --primary: #4ac431;
+    --primary-dark: #3a9f28;
+    --secondary: #2c3e50;
+    --light-bg: #f8f9fa;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: var(--light-bg);
+}
+
+.hero-about {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80') no-repeat center center;
+    background-size: cover;
+    padding: 120px 0;
+    color: white;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.hero-about h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-about p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.about-section {
+    padding: 80px 0;
+}
+
+.about-img {
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.about-img:hover {
+    transform: scale(1.02);
+}
+
+.mission-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    border-left: 5px solid var(--primary);
+}
+
+.how-it-works {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.process-step {
+    display: flex;
+    margin-bottom: 25px;
+    align-items: flex-start;
+}
+
+.step-icon {
+    background: var(--primary);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+}
+
+.btn-join {
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 50px;
+    border: none;
+    transition: all 0.3s;
+    font-size: 1.1rem;
+}
+
+.btn-join:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(74, 196, 49, 0.3);
+}
+
+footer {
+    background: var(--secondary);
+    color: white;
+    padding: 30px 0;
+    margin-top: 80px;
+}
+
+@media (max-width: 768px) {
+    .hero-about {
+        padding: 80px 0;
+    }
+    
+    .hero-about h1 {
+        font-size: 2.5rem;
+    }
+}
