@@ -29,6 +29,8 @@ from adminApp import views as admin_views
 
 urlpatterns = [
     path('', home, name="home"),
+    path('contact/', contact, name="contact"),
+    path('showfeedback',showfeedback,name='showfeedback'),
     path('register/', register, name="register"),
     path('login/', user_login, name="user_login"),
     path('feedback/',give_feedback, name='give_feedback'),

@@ -450,3 +450,9 @@ def give_feedback(request):
 def feedback_page(request):
     feedbacks = Feedback.objects.all().order_by('-id')  # newest first
     return render(request, 'feedback_page.html', {'feedbacks': feedbacks})
+
+def contact(request):
+    return render(request, 'contact.html')
+
+def showfeedback(request):
+    return render(request, 'showfeedback.html')
